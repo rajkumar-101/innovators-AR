@@ -19,6 +19,7 @@ using Vuforia;
 public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandler
 {
     public UnityEngine.Video.VideoPlayer videoPlayer;
+    public Transform initial_text;
     public Transform target_text;
     public Transform ButtonAction;
     public Transform panel;
@@ -96,6 +97,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<Renderer>(true);
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
+            initial_text.gameObject.SetActive(false);
             videoPlayer.Play();
             // Enable rendering:
             foreach (var component in rendererComponents)
@@ -110,7 +112,6 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                 component.enabled = true;
 
             ButtonAction.gameObject.SetActive(true);
-            target_text.gameObject.SetActive(true);
             panel.gameObject.SetActive(true);
 
             ButtonAction.GetComponent<Button>().onClick.AddListener(delegate { videoPlayer.Stop(); videoPlayer.Play(); });
@@ -126,6 +127,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
             videoPlayer.Pause();
+            initial_text.gameObject.SetActive(true);
             // Disable rendering:
             foreach (var component in rendererComponents)
                 component.enabled = false;
