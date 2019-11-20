@@ -22,6 +22,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     public Transform initial_text;
     public Transform target_text;
     public Transform ButtonAction;
+    public Transform pauseButton;
+    public Transform pauseButtonText;
     public Transform panel;
     #region PROTECTED_MEMBER_VARIABLES
 
@@ -112,9 +114,21 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                 component.enabled = true;
 
             ButtonAction.gameObject.SetActive(true);
+            pauseButton.gameObject.SetActive(true);
             panel.gameObject.SetActive(true);
 
             ButtonAction.GetComponent<Button>().onClick.AddListener(delegate { videoPlayer.Stop(); videoPlayer.Play(); });
+            pauseButton.GetComponent<Button>().onClick.AddListener(delegate { if (pauseButtonText.GetComponent<Text>().text == "Pause")
+                {
+                    Debug.Log("inside pause code");
+                    videoPlayer.Pause();pauseButtonText.GetComponent<Text>().text = "Play";
+                }
+                else
+                {
+                    Debug.Log("inside play code");
+                    videoPlayer.Play();pauseButtonText.GetComponent<Text>().text = "Pause";
+                }
+                });
         }
     }
 
@@ -141,6 +155,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                 component.enabled = false;
 
             ButtonAction.gameObject.SetActive(false);
+            pauseButton.gameObject.SetActive(false);
             target_text.gameObject.SetActive(false);
             panel.gameObject.SetActive(false);
         }
