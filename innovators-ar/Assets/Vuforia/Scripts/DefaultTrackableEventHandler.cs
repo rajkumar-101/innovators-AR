@@ -18,7 +18,8 @@ using Vuforia;
 /// </summary>
 public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandler
 {
-    public UnityEngine.Video.VideoPlayer videoPlayer;
+    public UnityEngine.Video.VideoPlayer videoPlayer1;
+    public UnityEngine.Video.VideoPlayer videoPlayer2;
     public Transform initial_text;
     public Transform target_text;
     public Transform ButtonAction;
@@ -98,7 +99,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
             initial_text.gameObject.SetActive(false);
-            videoPlayer.Play();
+            //videoPlayer.Play();
             // Enable rendering:
             foreach (var component in rendererComponents)
                 component.enabled = true;
@@ -113,8 +114,16 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
             ButtonAction.gameObject.SetActive(true);
             panel.gameObject.SetActive(true);
-
-            ButtonAction.GetComponent<Button>().onClick.AddListener(delegate { videoPlayer.Stop(); videoPlayer.Play(); });
+            if(mTrackableBehaviour.TrackableName == "stage_1")
+            {
+                videoPlayer1.Play();
+                ButtonAction.GetComponent<Button>().onClick.AddListener(delegate { videoPlayer1.Stop(); videoPlayer1.Play(); });
+            }
+            else if(mTrackableBehaviour.TrackableName == "stage_2")
+            {
+                videoPlayer2.Play();
+                ButtonAction.GetComponent<Button>().onClick.AddListener(delegate { videoPlayer2.Stop(); videoPlayer2.Play(); });
+            }
         }
     }
 
@@ -126,7 +135,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<Renderer>(true);
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
-            videoPlayer.Pause();
+            videoPlayer1.Pause();
+            videoPlayer2.Pause();
             initial_text.gameObject.SetActive(true);
             // Disable rendering:
             foreach (var component in rendererComponents)
