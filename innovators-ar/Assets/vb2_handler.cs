@@ -7,12 +7,14 @@ using Vuforia;
 public class vb2_handler : MonoBehaviour, IVirtualButtonEventHandler
 {
     public GameObject vb2obj;
-    public Transform target_text;
-    public Transform panel_text;
+    public GameObject desc_plane;
+    public GameObject desc_title;
+    public GameObject desc_text;
     // Start is called before the first frame update
     void Start()
     {
         vb2obj = GameObject.Find("VirtualButton2");
+        desc_plane = GameObject.Find("Description_plane");
         vb2obj.GetComponent<VirtualButtonBehaviour>().RegisterEventHandler(this);
     }
 
@@ -24,13 +26,13 @@ public class vb2_handler : MonoBehaviour, IVirtualButtonEventHandler
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
-        target_text.GetComponent<Text>().text = "substage 2";
-        panel_text.GetComponent<Text>().text = "in this stage...";
+        desc_title.GetComponent<TextMesh>().text = "substage 2";
+        desc_text.GetComponent<TextMesh>().text = "in this stage...";
+        desc_plane.SetActive(true);
     }
 
     public void OnButtonReleased(VirtualButtonBehaviour vb)
     {
-        target_text.GetComponent<Text>().text = "substage xxx";
-        panel_text.GetComponent<Text>().text = "xxx";
+        desc_plane.SetActive(false);
     }
 }

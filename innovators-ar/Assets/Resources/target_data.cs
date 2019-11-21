@@ -35,21 +35,16 @@ namespace Vuforia
                 //target_text.GetComponent<Text>().text = name;
                 if (name == "stage_1")
                 {
-                    target_text.GetComponent<Text>().text = "Digital Factory";
+                    target_text.GetComponent<Text>().text = "Stage 1";
                     panel_text.GetComponent<Text>().text = "this is stage 1 where the initial...";
                 }
 
                 if (name == "stage_2")
                 {
-                    target_text.GetComponent<Text>().text = "CDB";
-                    panel_text.GetComponent<Text>().text = "this is stage 2 where the initial...";
+                    target_text.GetComponent<Text>().text = "Stage 2";
+                    panel_text.GetComponent<Text>().text = "this is stage 2 where the process...";
                 }
 
-                if (name == "stage_3")
-                {
-                    target_text.GetComponent<Text>().text = "Stage 3";
-                    panel_text.GetComponent<Text>().text = "There are 2 sub stages. Move over each stage to get description";
-                }
             }
         }
     }
