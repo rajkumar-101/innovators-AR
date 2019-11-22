@@ -23,9 +23,10 @@ public class Stage3_handler : DefaultTrackableEventHandler
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
             initial_text.gameObject.SetActive(false);
-            ButtonAction.gameObject.SetActive(false);
+            console_anim_btn.gameObject.SetActive(false);
             target_text.gameObject.SetActive(false);
-            panel.gameObject.SetActive(false);
+            panel.gameObject.SetActive(true);
+            panel_text.GetComponent<Text>().text = "Move your finger over a substage to get description";
 
             desc_plane.gameObject.SetActive(false);
             // Enable rendering:
@@ -53,6 +54,8 @@ public class Stage3_handler : DefaultTrackableEventHandler
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
             initial_text.gameObject.SetActive(true);
+            console_anim_btn.gameObject.SetActive(false);
+
             // Disable rendering:
             foreach (var component in rendererComponents)
                 component.enabled = false;
@@ -65,7 +68,6 @@ public class Stage3_handler : DefaultTrackableEventHandler
             foreach (var component in canvasComponents)
                 component.enabled = false;
 
-            ButtonAction.gameObject.SetActive(false);
             target_text.gameObject.SetActive(false);
             panel.gameObject.SetActive(false);
         }

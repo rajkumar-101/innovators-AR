@@ -1,8 +1,19 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - Vuforia.target_data
+    - Stage3_handler
     - loader
+    - stage5_handler
+    - vb1_handler
+    - vb2_handler
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
@@ -16,6 +27,7 @@ ScriptsOnlyBuild:
     Vuforia.UnityExtensions.dll:
     - Vuforia.ImageTargetBehaviour
     - Vuforia.TurnOffBehaviour
+    - Vuforia.VirtualButtonBehaviour
     - Vuforia.VuforiaBehaviour
     - Vuforia.VuforiaConfiguration
     VuforiaScripts.dll:
@@ -43,9 +55,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 89
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 102
       Script: {instanceID: 0}
@@ -54,31 +72,41 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9452}
+      Script: {instanceID: 9434}
     - Class: 114
       Script: {instanceID: 9454}
     - Class: 114
-      Script: {instanceID: 9460}
+      Script: {instanceID: 9456}
     - Class: 114
-      Script: {instanceID: 9466}
+      Script: {instanceID: 9462}
     - Class: 114
-      Script: {instanceID: 9474}
+      Script: {instanceID: 9468}
     - Class: 114
-      Script: {instanceID: 9510}
+      Script: {instanceID: 9476}
     - Class: 114
       Script: {instanceID: 9512}
     - Class: 114
-      Script: {instanceID: 9764}
+      Script: {instanceID: 9514}
     - Class: 114
-      Script: {instanceID: 9772}
+      Script: {instanceID: 9766}
     - Class: 114
-      Script: {instanceID: 9886}
+      Script: {instanceID: 9796}
     - Class: 114
-      Script: {instanceID: 9908}
+      Script: {instanceID: 9888}
+    - Class: 114
+      Script: {instanceID: 9910}
     - Class: 114
       Script: {instanceID: 9916}
     - Class: 114
-      Script: {instanceID: 10312}
+      Script: {instanceID: 9918}
+    - Class: 114
+      Script: {instanceID: 10314}
+    - Class: 114
+      Script: {instanceID: 10852}
+    - Class: 114
+      Script: {instanceID: 11972}
+    - Class: 114
+      Script: {instanceID: 12546}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -121,27 +149,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9452}
-    - Class: 114
       Script: {instanceID: 9454}
     - Class: 114
-      Script: {instanceID: 9460}
+      Script: {instanceID: 9456}
     - Class: 114
-      Script: {instanceID: 9466}
+      Script: {instanceID: 9462}
     - Class: 114
-      Script: {instanceID: 9474}
+      Script: {instanceID: 9468}
     - Class: 114
-      Script: {instanceID: 9510}
+      Script: {instanceID: 9476}
     - Class: 114
       Script: {instanceID: 9512}
     - Class: 114
-      Script: {instanceID: 9764}
+      Script: {instanceID: 9514}
     - Class: 114
-      Script: {instanceID: 9916}
+      Script: {instanceID: 9766}
     - Class: 114
       Script: {instanceID: 9918}
     - Class: 114
-      Script: {instanceID: 10034}
+      Script: {instanceID: 9920}
+    - Class: 114
+      Script: {instanceID: 10036}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -201,6 +229,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: d0d5f2cc8dba3451e97759240ec6b0b9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Stage3_handler
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -399,18 +433,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.Advertisements.dll
-    namespaceName: UnityEngine.Advertisements
-    className: CallbackExecutor
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.Advertisements.dll
-    namespaceName: UnityEngine.Advertisements.Editor
-    className: Placeholder
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -635,10 +657,10 @@ ScriptsOnlyBuild:
     className: DefaultInitializationErrorHandler
   - hash:
       serializedVersion: 2
-      Hash: c9227b41e06d4a92b6af9e2e62483354
+      Hash: a3269d72d4893d993f6e5fb0a5e47283
     assemblyName: Assembly-CSharp.dll
-    namespaceName: Vuforia
-    className: target_data
+    namespaceName: 
+    className: vb1_handler
   - hash:
       serializedVersion: 2
       Hash: 303ad70ce203ad874efe2965d0fbcff9
@@ -1103,7 +1125,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 55e9a46993cd72eefc8a3abfe25eeb31
+      Hash: a19d40d600f98603eb5f126176dc8fae
     assemblyName: VuforiaScripts.dll
     namespaceName: 
     className: DefaultTrackableEventHandler
@@ -1427,6 +1449,12 @@ ScriptsOnlyBuild:
     className: WireframeTrackableEventHandler
   - hash:
       serializedVersion: 2
+      Hash: cae8798fb5bc32ecd7560e49ac1f9681
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vb2_handler
+  - hash:
+      serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -1635,8 +1663,14 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 52ee6dec48b4980f120e8e4ec7619dcb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: stage5_handler
   platform: 13
   scenePathNames:
   - Assets/Scenes/welcome_scene.unity
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Rajkumar/Desktop/innovators-ar/ar-demo-1.1.apk
+  playerPath: C:/Users/Rajkumar/Desktop/innovators-ar/ar-demo-1.2.apk

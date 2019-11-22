@@ -21,8 +21,9 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     public UnityEngine.Video.VideoPlayer videoPlayer1;
     public UnityEngine.Video.VideoPlayer videoPlayer2;
     public Transform initial_text;
-    public Transform target_text;
-    public Transform ButtonAction;
+    public GameObject target_text;
+    public GameObject console_anim_btn;
+    public Transform panel_text;
     public Transform panel;
     #region PROTECTED_MEMBER_VARIABLES
 
@@ -99,6 +100,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
             initial_text.gameObject.SetActive(false);
+            console_anim_btn.gameObject.SetActive(false);
             //videoPlayer.Play();
             // Enable rendering:
             foreach (var component in rendererComponents)
@@ -112,17 +114,19 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             foreach (var component in canvasComponents)
                 component.enabled = true;
 
-            ButtonAction.gameObject.SetActive(true);
             panel.gameObject.SetActive(true);
+            target_text.SetActive(true);
             if(mTrackableBehaviour.TrackableName == "stage_1")
             {
+                target_text.GetComponent<Text>().text = "Stage 1";
+                panel_text.GetComponent<Text>().text = "this is stage 1 where the initial...";
                 videoPlayer1.Play();
-                ButtonAction.GetComponent<Button>().onClick.AddListener(delegate { videoPlayer1.Stop(); videoPlayer1.Play(); });
             }
             else if(mTrackableBehaviour.TrackableName == "stage_2")
             {
+                target_text.GetComponent<Text>().text = "Stage 2";
+                panel_text.GetComponent<Text>().text = "this is stage 2 where the process...";
                 videoPlayer2.Play();
-                ButtonAction.GetComponent<Button>().onClick.AddListener(delegate { videoPlayer2.Stop(); videoPlayer2.Play(); });
             }
         }
     }
@@ -138,6 +142,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             videoPlayer1.Pause();
             videoPlayer2.Pause();
             initial_text.gameObject.SetActive(true);
+            console_anim_btn.gameObject.SetActive(false);
             // Disable rendering:
             foreach (var component in rendererComponents)
                 component.enabled = false;
@@ -149,8 +154,6 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             // Disable canvas':
             foreach (var component in canvasComponents)
                 component.enabled = false;
-
-            ButtonAction.gameObject.SetActive(false);
             target_text.gameObject.SetActive(false);
             panel.gameObject.SetActive(false);
         }
