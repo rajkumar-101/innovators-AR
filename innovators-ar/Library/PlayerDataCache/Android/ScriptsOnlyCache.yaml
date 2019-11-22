@@ -9,10 +9,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -100,13 +98,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9918}
     - Class: 114
-      Script: {instanceID: 10314}
+      Script: {instanceID: 10094}
     - Class: 114
-      Script: {instanceID: 10852}
+      Script: {instanceID: 10316}
     - Class: 114
-      Script: {instanceID: 11972}
+      Script: {instanceID: 10854}
     - Class: 114
-      Script: {instanceID: 12546}
+      Script: {instanceID: 14180}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1095,6 +1093,12 @@ ScriptsOnlyBuild:
     className: loader
   - hash:
       serializedVersion: 2
+      Hash: 52ee6dec48b4980f120e8e4ec7619dcb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: stage5_handler
+  - hash:
+      serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -1663,14 +1667,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 52ee6dec48b4980f120e8e4ec7619dcb
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: stage5_handler
   platform: 13
   scenePathNames:
   - Assets/Scenes/welcome_scene.unity
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Rajkumar/Desktop/innovators-ar/ar-demo-1.2.apk
+  playerPath: /Users/df/Desktop/apk-demo-1.21.apk

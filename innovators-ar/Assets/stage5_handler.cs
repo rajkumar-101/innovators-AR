@@ -29,9 +29,10 @@ public class stage5_handler : DefaultTrackableEventHandler
             console_anim_btn.gameObject.SetActive(true);
 
 
-            target_text.gameObject.SetActive(false);
+            target_text.gameObject.SetActive(true);
             panel.gameObject.SetActive(true);
             panel_text.GetComponent<Text>().text = "press button to animate";
+            target_text.GetComponent<Text>().text = "Stage 5";
             console_anim_btn.GetComponent<Button>().onClick.AddListener(delegate { console_ani.Play("console_model_anim"); });
 
             console_model.gameObject.SetActive(true);
